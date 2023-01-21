@@ -11,7 +11,7 @@ export default function DetalhesVaga() {
   return (
     <div>
       <Navbar></Navbar>
-      <main className="px-40">
+      <main className="px-40 bg-primary">
         <div className="py-12">
           <div className="flex justify-start items-center">
             <Image
