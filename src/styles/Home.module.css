@@ -1,14 +1,20 @@
+  /* body{
+    margin: 0;
+    box-sizing: border-box;
+  } */
+
 .mainHome {
   margin: 0;
   padding: 0;
-  height: 70vh;
+  height: 150vh;
+  width: 100%;
   background-color: white;
-  /* border: solid 1px red; */
 }
 
 .containerOne {
   display: flex;
   justify-content: center;
+  box-sizing: border-box;
 
 }
 
@@ -46,4 +52,34 @@
   margin-right: 5%;
   color: white;
   background-color: #1CA4A4;
+}
+
+.blueConteiner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: -1%;
+  height: 50vh;
+  background: linear-gradient(90deg, #1488CC 0%, #2B32B2 100%);
+  padding: 1%;
+
+}
+
+.imgBlueCont {
+  /* border: solid 1px red; */
+  height: 70vh;
+  display: flex;
+  align-items: center;
+
+}
+
+.textBlueCont {
+  position: absolute;
+  width: 50%;
+  right: 0;
+  padding: 1%;
+}
+
+.textBlue {
+  color: white;
 }
