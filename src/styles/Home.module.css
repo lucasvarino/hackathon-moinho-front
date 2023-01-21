@@ -83,3 +83,39 @@
 .textBlue {
   color: white;
 }
+
+.contBtnBlue {
+  display: flex;
+  justify-content: center;
+}
+
+.btnBlue {
+  background-color: #1CA4A4;
+  color: white;
+  
+}
+
+.containerThree {
+  display: flex;
+  align-items: center;
+  height: 50vh;
+  background-color: white;
+  padding: 1%;
+}
+
+.textContThree {
+  width: 50%;
+}
+
+.btnThree {
+  background-color: #1CA4A4;
+  color: white;
+
+}
+
+.imgContThree {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
