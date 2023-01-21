@@ -1,5 +1,6 @@
 import Card from "@/components/Card";
 import Navbar from "@/components/Navbar";
+import Pagination from "@/components/Pagination";
 import styles from "@/styles/Vagas.module.css";
 
 export default function Vagas() {
@@ -85,7 +86,12 @@ export default function Vagas() {
           Filtrar
         </button>
       </div>
-      <Card />
+      <div className="flex justify-between mb-10 mx-10">
+        <Card />
+        <Card />
+        <Card />
+      </div>
+      <Pagination />
     </>
   );
 }
