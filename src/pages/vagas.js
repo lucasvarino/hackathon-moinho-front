@@ -14,16 +14,16 @@ export default function Vagas() {
       </div>
       <div className="flex justify-center">
         <form className="w-2/3">
-          <label class="relative block">
+          <label className="relative block">
             <input
-              class="w-full bg-white placeholder:font-italitc border border-slate-400 drop-shadow-md rounded-xl py-6 pl-6 pr-10 focus:outline-none text-xl"
+              className="w-full bg-white placeholder:font-italitc border border-slate-400 drop-shadow-md rounded-xl py-6 pl-6 pr-10 focus:outline-none text-xl"
               placeholder="Digite uma área, cargo ou especialidade..."
               type="text"
             />
 
-            <button class="absolute inset-y-0 right-0 flex items-center justify-center pr-3 bg-slate-400 rounded-xl w-16">
+            <button className="absolute inset-y-0 right-0 flex items-center justify-center pr-3 bg-slate-400 rounded-xl w-16">
               <svg
-                class="h-5 w-5 fill-black"
+                className="h-5 w-5 fill-black"
                 xmlns="http://www.w3.org/2000/svg"
                 x="0px"
                 y="0px"
@@ -44,16 +44,16 @@ export default function Vagas() {
       <div className="ml-16 my-16 flex justify-start">
         <h1 className="text-2xl font-bold">Exibindo 15 vagas</h1>
 
-        <div class="mx-16  text-gray-700 md:flex md:items-center">
-          <div class="mb-1 md:mb-0 bg-slate-200 text-center p-2 rounded-sm">
-            <label for="forms-labelLeftInputCode" className="">
+        <div className="mx-16  text-gray-700 md:flex md:items-center">
+          <div className="mb-1 md:mb-0 bg-slate-200 text-center p-2 rounded-sm">
+            <label htmlFor="forms-labelLeftInputCode" className="">
               Especialidade
             </label>
           </div>
-          <div class="md:w-2/3 md:flex-grow">
+          <div className="md:w-2/3 md:flex-grow">
             <select
               id="countries"
-              class="bg-gray-50 border border-gray-300 text-sm rounded-sm block w-56 p-2.5 text-black"
+              className="bg-gray-50 border border-gray-300 text-sm rounded-sm block w-56 p-2.5 text-black"
             >
               <option selected>Escolha uma Especialidade</option>
               <option value="US">Ortopedia</option>
@@ -63,16 +63,16 @@ export default function Vagas() {
             </select>
           </div>
         </div>
-        <div class="text-gray-700 md:flex md:items-center">
-          <div class="mb-1 md:mb-0 bg-slate-200 text-center p-2 rounded-sm">
-            <label for="forms-labelLeftInputCode" className="">
+        <div className="text-gray-700 md:flex md:items-center">
+          <div className="mb-1 md:mb-0 bg-slate-200 text-center p-2 rounded-sm">
+            <label htmlFor="forms-labelLeftInputCode" className="">
               Salário
             </label>
           </div>
-          <div class="md:w-2/3 md:flex-grow">
+          <div className="md:w-2/3 md:flex-grow">
             <select
               id="countries"
-              class="bg-gray-50 border border-gray-300 text-sm rounded-sm block w-56 p-2.5 text-black"
+              className="bg-gray-50 border border-gray-300 text-sm rounded-sm block w-56 p-2.5 text-black"
             >
               <option selected>R$</option>
               <option value="US">Menos que R$2000,00</option>
@@ -82,7 +82,7 @@ export default function Vagas() {
             </select>
           </div>
         </div>
-        <button class="mx-16  bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        <button className="mx-16  bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
           Filtrar
         </button>
       </div>
