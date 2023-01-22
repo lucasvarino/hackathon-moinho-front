@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import {
   ArrowPathIcon,
@@ -19,6 +19,14 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function Navbar() {
+  const [logged, setLogged] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      setLogged(true);
+    }
+  }, [logged]);
+
   return (
     <Popover className="relative bg-white">
       <div className="mx-auto max-w-7xl px-6">
@@ -60,27 +68,35 @@ export default function Navbar() {
             >
               Vagas
             </Link>
-            <Link
-              href="/profissionais"
-              className="text-base font-medium text-gray-500 hover:text-gray-900"
-            >
-              Profissionais
-            </Link>
           </Popover.Group>
-          <div className="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
-            <Link
-              href="/login"
-              className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
-            >
-              Entrar
-            </Link>
-            <Link
-              href="/cadastroUsuario"
-              className="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
-            >
-              Cadastrar
-            </Link>
-          </div>
+          {!logged ? (
+            <div className="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
+              <Link
+                href="/login"
+                className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
+              >
+                Entrar
+              </Link>
+              <Link
+                href="/cadastroUsuario"
+                className="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+              >
+                Cadastrar
+              </Link>
+            </div>
+          ) : (
+            <div>
+              <Link href="/perfil">
+                <Image
+                  src="/profile.jpeg"
+                  alt=""
+                  width={50}
+                  height={50}
+                  className="rounded-full"
+                />
+              </Link>
+            </div>
+          )}
         </div>
       </div>
 
