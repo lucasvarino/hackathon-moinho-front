@@ -17,9 +17,20 @@ import {
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import Image from "next/image";
 import Link from "next/link";
+import api from "@/services/api";
+import { useRouter } from "next/router";
 
 export default function Navbar() {
   const [logged, setLogged] = useState(false);
+
+  const router = useRouter();
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    setLogged(false);
+    api.post("/api/logout");
+    router.push("/");
+  };
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -85,7 +96,7 @@ export default function Navbar() {
               </Link>
             </div>
           ) : (
-            <div>
+            <div className="flex">
               <Link href="/perfil">
                 <Image
                   src="/profile.jpeg"
@@ -95,6 +106,12 @@ export default function Navbar() {
                   className="rounded-full"
                 />
               </Link>
+              <button
+                className="ml-4 bg-blue-600 rounded-xl px-6 text-white"
+                onClick={logout}
+              >
+                Sair
+              </button>
             </div>
           )}
         </div>

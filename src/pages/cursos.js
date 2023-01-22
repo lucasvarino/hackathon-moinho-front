@@ -13,14 +13,14 @@ export default function Cursos() {
   useEffect(() => {
     async function buscaCursos() {
       try {
-        const response = await api.get('/api/courses', {
+        const response = await api.get("/api/courses", {
           params: {
             ...(name && {
-              name
-            })
-          }
+              name,
+            }),
+          },
         });
-  
+
         setCursos(response.data.data);
       } catch (error) {
         console.log(error);
@@ -67,17 +67,16 @@ export default function Cursos() {
           </form>
         </div>
         <div className="flex flex-wrap justify-evenly my-10 mx-10">
-          {
-            cursos.map((curso) => (
-              <CardCurso
-                key={curso.id}
-                id={curso.id}
-                name={curso.name}
-                teacherName={curso.teacher[0].user[0].name}
-                price={500}
-              />
-            ))
-          }
+          {cursos.map((curso) => (
+            <CardCurso
+              key={curso.id}
+              id={curso.id}
+              name={curso.name}
+              teacherName={curso.teacher[0].user[0].name}
+              description={curso.description}
+              price={500}
+            />
+          ))}
         </div>
         <Pagination />
       </main>
