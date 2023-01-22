@@ -1,7 +1,6 @@
 import Card from "@/components/Card";
 import Navbar from "@/components/Navbar";
 import Pagination from "@/components/Pagination";
-import styles from "@/styles/Vagas.module.css";
 
 export default function Vagas() {
   return (

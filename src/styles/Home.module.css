@@ -1,4 +1,4 @@
-  /* body{
+/* body{
     margin: 0;
     box-sizing: border-box;
   } */
@@ -15,11 +15,10 @@
   display: flex;
   justify-content: center;
   box-sizing: border-box;
-
 }
 
 .imgHomePage {
-  position: relative0;;
+  position: relative0;
 }
 
 .containerTwo {
@@ -39,7 +38,6 @@
 .subTextImg {
   width: 85%;
   color: white;
-
 }
 .buttonCont {
   display: flex;
@@ -51,7 +49,7 @@
   margin: 2% 0%;
   margin-right: 5%;
   color: white;
-  background-color: #1CA4A4;
+  background-color: #1ca4a4;
 }
 
 .blueConteiner {
@@ -60,9 +58,8 @@
   justify-content: space-between;
   margin-top: -1%;
   height: 50vh;
-  background: linear-gradient(90deg, #1488CC 0%, #2B32B2 100%);
+  background: linear-gradient(90deg, #1488cc 0%, #2b32b2 100%);
   padding: 1%;
-
 }
 
 .imgBlueCont {
@@ -70,7 +67,6 @@
   height: 70vh;
   display: flex;
   align-items: center;
-
 }
 
 .textBlueCont {
@@ -90,9 +86,8 @@
 }
 
 .btnBlue {
-  background-color: #1CA4A4;
+  background-color: #1ca4a4;
   color: white;
-  
 }
 
 .containerThree {
@@ -108,9 +103,8 @@
 }
 
 .btnThree {
-  background-color: #1CA4A4;
+  background-color: #1ca4a4;
   color: white;
-
 }
 
 .imgContThree {
