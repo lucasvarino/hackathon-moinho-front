@@ -1,8 +1,40 @@
+import { useState } from 'react';
+import { useRouter } from 'next/router';
+
 import { LockClosedIcon } from '@heroicons/react/20/solid'
 import Image from 'next/image';
 import Logo from '@/../public/logo.svg';
 
+import api from "@/services/api";
+
 export default function Login() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const router = useRouter();
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+
+    try {
+      const response = await api.post('/api/login', {
+        email,
+        password
+      });
+
+      const { token, user_type, id } = response.data;
+
+      localStorage.setItem("token", token);
+      localStorage.setItem("userType", user_type);
+      localStorage.setItem("userId", id);
+      localStorage.setItem("authenticated", "true");
+
+      router.push('/vagas');
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="w-full max-w-md space-y-8">
@@ -15,9 +47,8 @@ export default function Login() {
           <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
             Entrar
           </h2>
-          
         </div>
-        <form className="mt-8 space-y-6" action="#" method="POST">
+        <form className="mt-8 space-y-6" method="POST" onSubmit={handleSubmit}>
           <input type="hidden" name="remember" defaultValue="true" />
           <div className="-space-y-px rounded-md shadow-sm">
             <div>
@@ -32,6 +63,8 @@ export default function Login() {
                 required
                 className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                 placeholder="Email"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
               />
             </div>
             <div>
@@ -46,6 +79,8 @@ export default function Login() {
                 required
                 className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                 placeholder="Senha"
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
               />
             </div>
           </div>

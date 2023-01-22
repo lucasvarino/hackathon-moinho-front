@@ -4,7 +4,6 @@ import { MapPinIcon } from '@heroicons/react/24/outline'
 import Navbar from "@/components/Navbar";
 import Tag from "@/components/Tag";
 
-// import styles from "@/styles/offerDetails.css";
 import Image from "next/image";
 
 export default function DetalhesVaga() {

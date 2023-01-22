@@ -1,6 +1,10 @@
+import { useState } from "react";
+import { useRouter } from "next/router";
+
 import Footer from "@/components/Footer/footer";
 import Navbar from "@/components/Navbar";
-import { useState } from "react";
+
+import api from "@/services/api";
 
 export default function CadastroUsuario() {
   const [name, setName] = useState("");
@@ -9,6 +13,8 @@ export default function CadastroUsuario() {
   const [description, setDescription] = useState("");
   const [userTypeSelected, setUserTypeSelected] = useState("1");
   const [cnpj, setCnpj] = useState("");
+
+  const router = useRouter();
 
   const userTypes = [
     {
@@ -25,6 +31,27 @@ export default function CadastroUsuario() {
     },
   ];
 
+  async function handleSubmit(event) {
+    event.preventDefault();
+
+    try {
+      await api.post("/api/users", {
+        name,
+        password,
+        email,
+        user_type: userTypeSelected,
+        ...(cnpj && {
+          cnpj
+        })
+      });
+
+      router.push('/login');
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <div>
       <Navbar />
@@ -33,7 +60,7 @@ export default function CadastroUsuario() {
 
         <div className="mt-10 sm:mt-0">
           <div className="mt-5 md:col-span-2 md:mt-0">
-            <form action="#" method="POST" className="">
+            <form method="POST" onSubmit={handleSubmit}>
               <div className="overflow-hidden shadow sm:rounded-md">
                 <div className="bg-white px-4 py-5 sm:p-6">
                   <div className="grid grid-cols-6 gap-6">
