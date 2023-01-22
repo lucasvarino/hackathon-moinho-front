@@ -7,18 +7,25 @@ export default function Card(props) {
   return (
     <>
       <div className="max-w-md p-6 bg-white border border-gray-200 rounded-lg shadow">
-        <a href={"/detalhesVaga/" + props.vagaId} className="flex items-center justify-around">
+        <a
+          href={"/detalhesVaga/" + props.vagaId}
+          className="flex items-center justify-around"
+        >
           <Image src="hospital.svg" alt="Hospital" width={100} height={100} />
           <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
             {props.nomeInstituicao}
           </h5>
         </a>
         <a href={"/detalhesVaga/" + props.vagaId}>
-          <h6 className="text-xl">{props.nome}</h6>
+          <h6 className="text-xl ml-3">{props.nome}</h6>
         </a>
-        <div className="flex justify-between">
-          <p className="text-gray-700 font-bold text-xs my-3">{props.periodo}</p>
-          <p className="text-gray-700 font-bold text-xs my-3">R$ {props.salario}</p>
+        <div className="flex justify-around">
+          <p className="text-gray-700 font-bold text-xs my-3">
+            {props.periodo}
+          </p>
+          <p className="text-gray-700 font-bold text-xs my-3">
+            R$ {props.salario}
+          </p>
           <p className="text-gray-700 font-bold text-xs my-3">
             45 pessoas aplicaram
           </p>
@@ -35,7 +42,9 @@ export default function Card(props) {
             Avenida Rio Branco, 95, Centro
           </p>
         </div>
-        <Tag className="bg-light-green text-dark-green">{props.especializacao}</Tag>
+        <Tag className="bg-light-green text-dark-green">
+          {props.especializacao}
+        </Tag>
       </div>
     </>
   );
