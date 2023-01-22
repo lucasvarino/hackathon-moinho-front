@@ -1,8 +1,35 @@
+import { useEffect, useState } from "react";
+
 import Navbar from "@/components/Navbar";
 import Pagination from "@/components/Pagination";
 import CardCurso from "@/components/CardCurso";
 
+import api from "@/services/api";
+
 export default function Cursos() {
+  const [name, setName] = useState("");
+  const [cursos, setCursos] = useState([]);
+
+  useEffect(() => {
+    async function buscaCursos() {
+      try {
+        const response = await api.get('/api/courses', {
+          params: {
+            ...(name && {
+              name
+            })
+          }
+        });
+  
+        setCursos(response.data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    buscaCursos();
+  }, [name]);
+
   return (
     <div>
       <Navbar />
@@ -19,6 +46,8 @@ export default function Cursos() {
                 className="w-full bg-white placeholder:font-italitc border border-slate-400 drop-shadow-md rounded-xl py-6 pl-6 pr-10 focus:outline-none text-xl"
                 placeholder="Digite uma área, cargo ou especialidade..."
                 type="text"
+                value={name}
+                onChange={(event) => setName(event.target.value)}
               />
 
               <button className="absolute inset-y-0 right-0 flex items-center justify-center pr-3 bg-slate-400 rounded-xl w-16">
@@ -38,34 +67,17 @@ export default function Cursos() {
           </form>
         </div>
         <div className="flex flex-wrap justify-evenly my-10 mx-10">
-          <CardCurso
-            id={1}
-            name={"Finanças na área da saúde"}
-            teacherName={"Rodrigo Santos"}
-            durationInHours={10}
-            price={500}
-          />
-          <CardCurso
-            id={2}
-            name={"Legislação na área da saúde"}
-            teacherName={"Rodrigo Santos"}
-            durationInHours={8}
-            price={400}
-          />
-          <CardCurso
-            id={3}
-            name={"Gestão na área da saúde"}
-            teacherName={"Rodrigo Santos"}
-            durationInHours={12}
-            price={550}
-          />
-          <CardCurso
-            id={3}
-            name={"Gestão na área da saúde"}
-            teacherName={"Rodrigo Santos"}
-            durationInHours={12}
-            price={550}
-          />
+          {
+            cursos.map((curso) => (
+              <CardCurso
+                key={curso.id}
+                id={curso.id}
+                name={curso.name}
+                teacherName={curso.teacher[0].user[0].name}
+                price={500}
+              />
+            ))
+          }
         </div>
         <Pagination />
       </main>

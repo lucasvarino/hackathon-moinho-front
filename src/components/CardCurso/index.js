@@ -12,7 +12,6 @@ export default function CardCurso(props) {
       </a>
       <h6 className="text-md">Professor: {props.teacherName}</h6>
       <div className="flex justify-between">
-        <p className="text-gray-700 font-bold text-xs my-3">{props.durationInHours} horas</p>
         <p className="text-gray-700 font-bold text-xs my-3">R$ {props.price}</p>
       </div>
       <a

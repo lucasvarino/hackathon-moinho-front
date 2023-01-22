@@ -7,6 +7,7 @@ import {
 } from "@material-tailwind/react";
 import { VideoCameraIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 function Icon({ id, open }) {
   return (
@@ -27,6 +28,8 @@ function Icon({ id, open }) {
 
 export default function Curso() {
   const [open, setOpen] = useState(0);
+  const router = useRouter();
+  const { id } = router.query;
 
   const handleOpen = (value) => {
     setOpen(open === value ? 0 : value);
@@ -36,7 +39,7 @@ export default function Curso() {
     <>
       <Navbar />
       <div className="text-4xl font-black my-6 mx-12">
-        <h1>Financias para Ambiente Hospitalar</h1>
+        <h1>Finanças na área da saúde</h1>
       </div>
 
       <div className="mx-8 flex">
