@@ -9,15 +9,13 @@ export default function CardCurso(props) {
         className="flex items-center justify-around"
       >
         <Image src="hospital.svg" alt="Hospital" width={100} height={100} />
-        <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900">
+        <h5 className="mb-2 text-xl ml-3 font-bold tracking-tight text-gray-900">
           {props.name}
         </h5>
       </a>
       <h6 className="text-md">Professor: {props.teacherName}</h6>
       <div className="flex justify-between">
-        <p className="text-gray-700 font-bold text-xs my-3">
-          {props.durationInHours} horas
-        </p>
+        <p className="text-gray-700 font-bold text-xs my-3">32 horas</p>
         <p className="text-gray-700 font-bold text-xs my-3">R$ {props.price}</p>
       </div>
       <a
@@ -27,8 +25,8 @@ export default function CardCurso(props) {
         {props.description}
       </a>
       <div className="mt-4">
-        <Tag className="bg-light-green text-dark-green">Ortopedia</Tag>
-        <Tag className="bg-light-red text-dark-red ml-2">Pediatria</Tag>
+        <Tag className="bg-light-green text-dark-green">Financeiro</Tag>
+        <Tag className="bg-light-red text-dark-red ml-2">Administrativo</Tag>
       </div>
     </div>
   );

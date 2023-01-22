@@ -52,7 +52,7 @@ export default function DetalhesVaga() {
             </div>
             <div className="pb-12">
               <h2 className="text-dark font-bold text-xl mt-6 mb-4">
-                {vaga.name}
+                {instituicao.name}
               </h2>
               <div className="flex justify-between items-center">
                 <div className="flex items-start text-light-gray">
@@ -63,10 +63,10 @@ export default function DetalhesVaga() {
                 </div>
                 <div>
                   <Tag className="bg-light-green text-dark-green">
-                    Ortopedia
+                    Financeiro
                   </Tag>
                   <Tag className="bg-light-red text-dark-red ml-4">
-                    Pediatria
+                    Administrativo
                   </Tag>
                 </div>
               </div>
@@ -76,7 +76,9 @@ export default function DetalhesVaga() {
                   Avenida Rio Branco, 95, Centro
                 </span>
               </div>
-              <p className="text-dark text-justify mt-8">{vaga.description}</p>
+              <p className="text-dark text-justify mt-8">
+                {instituicao.description}
+              </p>
 
               <button className="bg-light-green text-dark-green hover:bg-medium-green transition-colors py-4 px-6 rounded-xl font-bold text-sm mt-12">
                 Aplicar para vaga

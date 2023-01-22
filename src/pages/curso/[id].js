@@ -39,7 +39,7 @@ export default function Curso() {
     <>
       <Navbar />
       <div className="text-4xl font-black my-6 mx-12">
-        <h1>Finanças na área da saúde</h1>
+        <h1>Bootcamp Contabilidade Hospitalar</h1>
       </div>
 
       <div className="mx-8 flex">
