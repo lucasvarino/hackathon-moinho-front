@@ -1,8 +1,56 @@
 import Card from "@/components/Card";
 import Navbar from "@/components/Navbar";
 import Pagination from "@/components/Pagination";
+import api from "@/services/api";
+import { useEffect, useState } from "react";
 
 export default function Vagas() {
+  const [name, setName] = useState("");
+  const [role, setRole] = useState("");
+  const [salary, setSalary] = useState("");
+  const [vagas, setVagas] = useState([]);
+  const [roles, setRoles] = useState([]);
+
+  useEffect(() => {
+    async function buscaCargos() {
+      try {
+        const response = await api.get('/api/roles');
+  
+        setRoles(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    buscaCargos();
+  }, []);
+
+  useEffect(() => {
+    async function buscaVagas() {
+      try {
+        const response = await api.get('/api/home', {
+          params: {
+            ...(name && {
+              name
+            }),
+            ...(role && {
+              role
+            }),
+            ...(salary && {
+              salary
+            })
+          }
+        });
+  
+        setVagas(response.data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    buscaVagas();
+  }, [name, role, salary]);
+
   return (
     <>
       <Navbar />
@@ -18,6 +66,8 @@ export default function Vagas() {
               className="w-full bg-white placeholder:font-italitc border border-slate-400 drop-shadow-md rounded-xl py-6 pl-6 pr-10 focus:outline-none text-xl"
               placeholder="Digite uma área, cargo ou especialidade..."
               type="text"
+              value={name}
+              onChange={(event) => setName(event.target.value)}
             />
 
             <button className="absolute inset-y-0 right-0 flex items-center justify-center pr-3 bg-slate-400 rounded-xl w-16">
@@ -53,13 +103,19 @@ export default function Vagas() {
             <select
               id="countries"
               className="bg-gray-50 border border-gray-300 text-sm rounded-sm block w-56 p-2.5 text-black"
+              value={role}
+              onChange={(event) => setRole(event.target.value)}
             >
               <option selected>Escolha uma Especialidade</option>
-              <option value="US">Ortopedia</option>
-              <option value="CA">Pediatria</option>
-              <option value="FR">Odontologia</option>
-              <option value="DE">Médico Geral</option>
-            </select>
+              {
+                roles.map((role) => (
+                  <option
+                    key={role.id}
+                    value={role.id}
+                  >{role.name}</option>
+                ))
+              }
+              </select>
           </div>
         </div>
         <div className="text-gray-700 md:flex md:items-center">
@@ -72,12 +128,15 @@ export default function Vagas() {
             <select
               id="countries"
               className="bg-gray-50 border border-gray-300 text-sm rounded-sm block w-56 p-2.5 text-black"
+              value={salary}
+              onChange={(event) => setSalary(event.target.value)}
             >
               <option selected>R$</option>
-              <option value="US">Menos que R$2000,00</option>
-              <option value="CA">Entre R$2000,00 e R$6000,00</option>
-              <option value="FR">Entre R$6000,00 e R$9000,00</option>
-              <option value="DE">Mais que R$9000,00</option>
+              <option value={2000}>Maior que R$2000,00</option>
+              <option value={4000}>Maior que R$4000,00</option>
+              <option value={6000}>Maior que R$6000,00</option>
+              <option value={9000}>Maior que R$9000,00</option>
+              <option value={15000}>Mais que R$15000,00</option>
             </select>
           </div>
         </div>
@@ -85,10 +144,21 @@ export default function Vagas() {
           Filtrar
         </button>
       </div>
-      <div className="flex justify-between mb-10 mx-10">
-        <Card />
-        <Card />
-        <Card />
+      <div className="flex justify-evenly mb-10 mx-10">
+        {
+          vagas.map((vaga) => (
+            <Card
+              key={vaga.id}
+              vagaId={vaga.id}
+              nome={vaga.name}
+              nomeInstituicao={vaga.user[0].name}
+              periodo={vaga.period}
+              salario={vaga.salary}
+              descricao={vaga.description}
+              especializacao={vaga.role[0].name}
+            />
+          ))
+        }
       </div>
       <Pagination />
     </>
